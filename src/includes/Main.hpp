@@ -4,6 +4,8 @@
 
 #include <iostream>
 #include <chrono>
+#include <ratio>
+
 #include <cstdlib>
 
 

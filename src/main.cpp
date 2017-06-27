@@ -2,33 +2,35 @@
 #include "includes/Main.hpp"
 #include "includes/UtilityFunctions.hpp"
 
-
-void printTesting(int n = 0);
+void waitForInput();
 
 
 int main(int argc, char *argv[])
 {
-	initializeProgram();
-	
-	std::cout << argv[1] << std::endl;
-	
-	if (argc == 1) {
-		printTesting(argc);
-	} else if (argc == 2) {
-		printTesting(argc);
-	} else {
-		std::cout << "Unknown number of parameters passed in. [Terminating...] " << std::endl;
+	if (argc == 2) {
+		initializeProgram();
 		
-		// PrintCommandLineUsageHelp();
+		auto timepointStart = std::chrono::system_clock::now();
+	
+		std::cout << argv[1] << std::endl;
+	
+		waitForInput();
+		
+		auto timepointEnd = std::chrono::system_clock::now();
+	
+		auto durationDifference = timepointEnd - timepointStart;
+		
+		std::cout << std::chrono::duration<double, std::ratio<1, 1'000>>(durationDifference).count() << "ms " << std::endl;
+		
+		// Write output to a file
+		
+	} else {
 		return EXIT_FAILURE;
 	}
 }
 
 
-void printTesting(int n)
+void waitForInput()
 {
-	std::cout << "testing..." << std::endl;
-	std::cout << "\tParameter count: " << n << std::endl << std::endl;
+	system("pause");
 }
-
-//std::chrono::timepoint start
